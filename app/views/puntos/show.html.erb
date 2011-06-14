@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Proyecto:</b>
+  <%= @punto.proyecto_id %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @punto.nombre %>
+</p>
+
+<p>
+  <b>Secuencia:</b>
+  <%= @punto.secuencia %>
+</p>
+
+<p>
+  <b>Latitud:</b>
+  <%= @punto.latitud %>
+</p>
+
+<p>
+  <b>Longitud:</b>
+  <%= @punto.longitud %>
+</p>
+
+<p>
+  <b>Distancia:</b>
+  <%= @punto.distancia %>
+</p>
+
+<p>
+  <b>Angulo:</b>
+  <%= @punto.angulo %>
+</p>
+
+
+<%= link_to 'Edit', edit_punto_path(@punto) %> |
+<%= link_to 'Back', puntos_path %>

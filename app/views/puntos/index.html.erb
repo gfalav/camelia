@@ -1,0 +1,91 @@
+<h1>Listing puntos</h1>
+<div style="width:100%%">
+<div style="width:50%; float:left;">
+	<table id="tbpuntos">
+	  <tr>
+	    <th>Proyecto</th>
+	    <th>Nombre</th>
+	    <th>Secuencia</th>
+	    <th>Latitud</th>
+	    <th>Longitud</th>
+	    <th>Distancia</th>
+	    <th>Angulo</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	
+	<% @puntos.each do |punto| %>
+	  <tr>
+	    <td><%= punto.proyecto_id %></td>
+	    <td><%= punto.nombre %></td>
+	    <td><%= punto.secuencia %></td>
+	    <td><%= number_with_precision(punto.latitud, :precision=>4) %></td>
+	    <td><%= number_with_precision(punto.longitud, :precision=>4) %></td>
+	    <td><%= number_with_precision(punto.distancia, :precision=>1) %></td>
+	    <td><%= number_with_precision(punto.angulo, :precision=>3) %></td>
+	    <td><%= link_to 'Show', punto %></td>
+	    <td><%= link_to 'Edit', edit_punto_path(punto) %></td>
+	    <td><%= link_to 'Destroy', punto, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+	
+	<br />
+	<%= link_to 'New Punto', new_punto_path %>
+
+	</div>
+	<div id="map_canvas" style="width:50%; height:500px;float:rigth;"></div>
+</div>
+
+
+   <script type="text/javascript">
+	 jQuery.noConflict();
+     jQuery(document).ready(function(){
+		var latlng = new google.maps.LatLng(-33.30, -66.33);
+	    var myOptions = {
+      		zoom: 12,
+      		center: latlng,
+      		mapTypeId: google.maps.MapTypeId.HYBRID
+    	};
+    	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		google.maps.event.addListener(map, 'click', function(event) {
+			jQuery.ajax({
+			   type: "POST",
+			   url: "../puntos/indajax",
+			   dataType: 'json',
+			   data: "lat="+event.latLng.lat()+"&long="+event.latLng.lng(),
+			   success: function(puntos){ 
+			     jQuery(location).attr('href','../puntos');
+			   }
+			 });
+  		});
+
+		
+		dibujatraza(<%=raw(@puntosarr) %>);
+
+		function dibujatraza(puntos){
+			var puntosarr = [];
+			var mylatlng = new google.maps.LatLng(33.63,66.3);
+			jQuery.each(puntos,function(index,value){
+				mylatlng = new google.maps.LatLng(value.punto.latitud, value.punto.longitud);
+				var marker = new google.maps.Marker({
+				      position: mylatlng, 
+				      map: map, 
+				      title: value.punto.nombre
+				});  	
+				puntosarr.push(mylatlng);
+			});
+			map.setCenter(mylatlng);
+			var traza = new google.maps.Polyline({
+			    path: puntosarr,
+			    strokeColor: "#0000FF",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 2
+			});
+	  		traza.setMap(map);
+		};
+		
+     });
+   </script>

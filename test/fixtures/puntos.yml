@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  proyecto_id: 1
+  nombre: MyString
+  secuencia: 1
+  latitud: 9.99
+  longitud: 9.99
+  distancia: 9.99
+  angulo: 9.99
+
+two:
+  proyecto_id: 1
+  nombre: MyString
+  secuencia: 1
+  latitud: 9.99
+  longitud: 9.99
+  distancia: 9.99
+  angulo: 9.99

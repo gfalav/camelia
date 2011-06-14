@@ -1,0 +1,45 @@
+<%= form_for(@punto) do |f| %>
+  <% if @punto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@punto.errors.count, "error") %> prohibited this punto from being saved:</h2>
+
+      <ul>
+      <% @punto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :proyecto_id %><br />
+    <%= f.text_field :proyecto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :secuencia %><br />
+    <%= f.text_field :secuencia %>
+  </div>
+  <div class="field">
+    <%= f.label :latitud %><br />
+    <%= f.text_field :latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :longitud %><br />
+    <%= f.text_field :longitud %>
+  </div>
+  <div class="field">
+    <%= f.label :distancia %><br />
+    <%= f.text_field :distancia %>
+  </div>
+  <div class="field">
+    <%= f.label :angulo %><br />
+    <%= f.text_field :angulo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nombre: MyString
+  comitente: MyString
+  constructor: MyString
+  proyectista: MyString
+  fproyecto: 2011-06-11
+  ubicacion: MyString
+  descripcion: MyString
+  expediente: MyString
+
+two:
+  nombre: MyString
+  comitente: MyString
+  constructor: MyString
+  proyectista: MyString
+  fproyecto: 2011-06-11
+  ubicacion: MyString
+  descripcion: MyString
+  expediente: MyString
