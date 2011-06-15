@@ -3,17 +3,17 @@ class PuntosController < ApplicationController
   def indajax
     if (params[:lat]!=nil && params[:long]!=nil)
       newpunto = Punto.new
-      newpunto.latitud = params[:lat]
-      newpunto.longitud = params[:long]
-      newpunto.proyecto_id = 1
-      newpunto.secuencia = Punto.maximum(:secuencia).to_i + 10 
+      newpunto.latitud = params[:lat].to_f
+      newpunto.longitud = params[:long].to_f
+      newpunto.proyecto_id = params[:proyecto_id].to_i
+      newpunto.secuencia = Punto.where(:proyecto_id => params[:proyecto_id]).maximum(:secuencia).to_i + 10 
       newpunto.nombre = "Punto " + newpunto.secuencia.to_s
       newpunto.distancia = 0
       newpunto.angulo = 0
       newpunto.save
     end
     
-    @puntosarr = calcdistang
+    @puntosarr = calcdistang(params[:proyecto_id])
     
     render :json => @puntosarr.to_json
         
@@ -31,6 +31,10 @@ class PuntosController < ApplicationController
       elsif (p2==nil)
         p2 = p1
         p1 = p
+        x1 = (p2.longitud - p1.longitud) * 60 * 1852 * Math.cos(p1.latitud * Math::PI / 180)
+        y1 = (p2.latitud - p1.latitud) * 60 * 1852
+        p1.distancia = Math.sqrt(x1*x1 + y1 * y1)
+        p1.save 
       else
         p3 = p2
         p2 = p1
@@ -67,6 +71,7 @@ class PuntosController < ApplicationController
   def index
     @puntos = calcdistang(params[:proyecto_id])
     @puntosarr = @puntos.to_json
+    @proyecto_id = params[:proyecto_id]
     
     respond_to do |format|
       format.html # index.html.erb
@@ -79,6 +84,7 @@ class PuntosController < ApplicationController
   def show
     
     @punto = Punto.find(params[:id])
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -100,6 +106,7 @@ class PuntosController < ApplicationController
   # GET /puntos/1/edit
   def edit
     @punto = Punto.find(params[:id])
+    @proyecto_id = params[:proyecto_id]
   end
 
   # POST /puntos
@@ -139,6 +146,7 @@ class PuntosController < ApplicationController
   def destroy
     @punto = Punto.find(params[:id])
     @punto.destroy
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html { redirect_to(puntos_url) }

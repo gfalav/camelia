@@ -24,9 +24,9 @@
 	    <td><%= number_with_precision(punto.longitud, :precision=>4) %></td>
 	    <td><%= number_with_precision(punto.distancia, :precision=>1) %></td>
 	    <td><%= number_with_precision(punto.angulo, :precision=>3) %></td>
-	    <td><%= link_to 'Show', punto %></td>
-	    <td><%= link_to 'Edit', edit_punto_path(punto) %></td>
-	    <td><%= link_to 'Destroy', punto, :confirm => 'Are you sure?', :method => :delete %></td>
+	    <td><%= link_to 'Show', punto, :proyecto_id=>@proyecto_id %></td>
+	    <td><%= link_to 'Edit', edit_punto_path(punto), :proyecto_id=>@proyecto_id %></td>
+	    <td><%= link_to 'Destroy', punto, :confirm => 'Are you sure?', :method => :delete, :proyecto_id=>@proyecto_id %></td>
 	  </tr>
 	<% end %>
 	</table>
@@ -40,6 +40,7 @@
 
 
    <script type="text/javascript">
+	 var proyecto_id = <%=@proyecto_id %>;
 	 jQuery.noConflict();
      jQuery(document).ready(function(){
 		var latlng = new google.maps.LatLng(-33.30, -66.33);
@@ -55,9 +56,9 @@
 			   type: "POST",
 			   url: "../puntos/indajax",
 			   dataType: 'json',
-			   data: "lat="+event.latLng.lat()+"&long="+event.latLng.lng(),
+			   data: "lat="+event.latLng.lat()+"&long="+event.latLng.lng()+"&proyecto_id="+proyecto_id,
 			   success: function(puntos){ 
-			     jQuery(location).attr('href','../puntos');
+			     jQuery(location).attr('href','../puntos?proyecto_id='+proyecto_id);
 			   }
 			 });
   		});
@@ -67,7 +68,7 @@
 
 		function dibujatraza(puntos){
 			var puntosarr = [];
-			var mylatlng = new google.maps.LatLng(33.63,66.3);
+			var mylatlng = new google.maps.LatLng(-33.30,-66.33);
 			jQuery.each(puntos,function(index,value){
 				mylatlng = new google.maps.LatLng(value.punto.latitud, value.punto.longitud);
 				var marker = new google.maps.Marker({
