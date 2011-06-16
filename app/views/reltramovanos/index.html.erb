@@ -1,0 +1,27 @@
+<h1>Listing reltramovanos</h1>
+
+<table>
+  <tr>
+    <th>Tramo</th>
+    <th>Vano</th>
+    <th>Angulo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reltramovanos.each do |reltramovano| %>
+  <tr>
+    <td><%= reltramovano.tramo_id %></td>
+    <td><%= reltramovano.vano_id %></td>
+    <td><%= reltramovano.angulo %></td>
+    <td><%= link_to 'Show', reltramovano %></td>
+    <td><%= link_to 'Edit', edit_reltramovano_path(reltramovano) %></td>
+    <td><%= link_to 'Destroy', reltramovano, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reltramovano', new_reltramovano_path %>

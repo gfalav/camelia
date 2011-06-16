@@ -1,0 +1,2 @@
+module VanosHelper
+end

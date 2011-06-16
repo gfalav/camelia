@@ -1,0 +1,43 @@
+<h1>Listing vanos</h1>
+
+<table>
+  <tr>
+    <th>Proyecto</th>
+    <th>Nombre</th>
+    <th>Vano</th>
+    <th>Conductore</th>
+    <th>Conductorg</th>
+    <th>Tiromax e</th>
+    <th>Flechamax e</th>
+    <th>Tma e</th>
+    <th>Tiromax g</th>
+    <th>Flechamax g</th>
+    <th>Tma g</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vanos.each do |vano| %>
+  <tr>
+    <td><%= vano.proyecto_id %></td>
+    <td><%= vano.nombre %></td>
+    <td><%= vano.vano %></td>
+    <td><%= vano.conductore_id %></td>
+    <td><%= vano.conductorg_id %></td>
+    <td><%= vano.tiromax_e %></td>
+    <td><%= vano.flechamax_e %></td>
+    <td><%= vano.tma_e %></td>
+    <td><%= vano.tiromax_g %></td>
+    <td><%= vano.flechamax_g %></td>
+    <td><%= vano.tma_g %></td>
+    <td><%= link_to 'Show', vano %></td>
+    <td><%= link_to 'Edit', edit_vano_path(vano) %></td>
+    <td><%= link_to 'Destroy', vano, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vano', new_vano_path %>

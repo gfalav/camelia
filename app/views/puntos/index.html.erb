@@ -33,6 +33,7 @@
 	
 	<br />
 	<%= link_to 'New Punto', new_punto_path %>
+	<%= link_to 'Calcula Tramos', :controller=>'tramos',:action=>'index',:proyecto_id=>@proyecto_id %>
 
 	</div>
 	<div id="map_canvas" style="width:50%; height:500px;float:rigth;"></div>

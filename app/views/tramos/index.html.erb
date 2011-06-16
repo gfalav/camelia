@@ -1,0 +1,31 @@
+<h1>Listing tramos</h1>
+
+<table>
+  <tr>
+    <th>Secuencia</th>
+    <th>Proyecto</th>
+    <th>Tramo</th>
+    <th>Tipo tramo</th>
+    <th>Cantidad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tramos.each do |tramo| %>
+  <tr>
+    <td><%= tramo.secuencia %></td>
+    <td><%= tramo.proyecto_id %></td>
+    <td><%= tramo.nombre %></td>
+    <td><%= tramo.ttramo.tipo %></td>
+    <td><%= tramo.cantidad %></td>
+    <td><%= link_to 'Show', tramo %></td>
+    <td><%= link_to 'Edit', edit_tramo_path(tramo) %></td>
+    <td><%= link_to 'Destroy', tramo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tramo', new_tramo_path %>

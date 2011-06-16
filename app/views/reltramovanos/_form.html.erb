@@ -1,0 +1,29 @@
+<%= form_for(@reltramovano) do |f| %>
+  <% if @reltramovano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reltramovano.errors.count, "error") %> prohibited this reltramovano from being saved:</h2>
+
+      <ul>
+      <% @reltramovano.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tramo_id %><br />
+    <%= f.text_field :tramo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vano_id %><br />
+    <%= f.text_field :vano_id %>
+  </div>
+  <div class="field">
+    <%= f.label :angulo %><br />
+    <%= f.text_field :angulo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,61 @@
+<%= form_for(@vano) do |f| %>
+  <% if @vano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vano.errors.count, "error") %> prohibited this vano from being saved:</h2>
+
+      <ul>
+      <% @vano.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :proyecto_id %><br />
+    <%= f.text_field :proyecto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :vano %><br />
+    <%= f.text_field :vano %>
+  </div>
+  <div class="field">
+    <%= f.label :conductore_id %><br />
+    <%= f.text_field :conductore_id %>
+  </div>
+  <div class="field">
+    <%= f.label :conductorg_id %><br />
+    <%= f.text_field :conductorg_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tiromax_e %><br />
+    <%= f.text_field :tiromax_e %>
+  </div>
+  <div class="field">
+    <%= f.label :flechamax_e %><br />
+    <%= f.text_field :flechamax_e %>
+  </div>
+  <div class="field">
+    <%= f.label :tma_e %><br />
+    <%= f.text_field :tma_e %>
+  </div>
+  <div class="field">
+    <%= f.label :tiromax_g %><br />
+    <%= f.text_field :tiromax_g %>
+  </div>
+  <div class="field">
+    <%= f.label :flechamax_g %><br />
+    <%= f.text_field :flechamax_g %>
+  </div>
+  <div class="field">
+    <%= f.label :tma_g %><br />
+    <%= f.text_field :tma_g %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  radical: MyString
+  nombre: MyString
+  desc: MyString
+  valor: 1.5
+
+two:
+  radical: MyString
+  nombre: MyString
+  desc: MyString
+  valor: 1.5

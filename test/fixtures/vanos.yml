@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  proyecto_id: 1
+  vano: 9.99
+  conductore_id: 1
+  conductorg_id: 1
+  tiromax_e: 9.99
+  flechamax_e: 9.99
+  tma_e: 9.99
+  tiromax_g: 9.99
+  flechamax_g: 9.99
+  tma_g: 9.99
+
+two:
+  proyecto_id: 1
+  vano: 9.99
+  conductore_id: 1
+  conductorg_id: 1
+  tiromax_e: 9.99
+  flechamax_e: 9.99
+  tma_e: 9.99
+  tiromax_g: 9.99
+  flechamax_g: 9.99
+  tma_g: 9.99

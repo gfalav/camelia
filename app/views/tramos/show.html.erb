@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ttramo:</b>
+  <%= @tramo.ttramo %>
+</p>
+
+<p>
+  <b>Secuencia:</b>
+  <%= @tramo.secuencia %>
+</p>
+
+<p>
+  <b>Proyecto:</b>
+  <%= @tramo.proyecto_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_tramo_path(@tramo) %> |
+<%= link_to 'Back', tramos_path %>

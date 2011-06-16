@@ -1,0 +1,29 @@
+<h1>Listing parametros</h1>
+
+<table>
+  <tr>
+    <th>Radical</th>
+    <th>Nombre</th>
+    <th>Desc</th>
+    <th>Valor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parametros.each do |parametro| %>
+  <tr>
+    <td><%= parametro.radical %></td>
+    <td><%= parametro.nombre %></td>
+    <td><%= parametro.desc %></td>
+    <td><%= parametro.valor %></td>
+    <td><%= link_to 'Show', parametro %></td>
+    <td><%= link_to 'Edit', edit_parametro_path(parametro) %></td>
+    <td><%= link_to 'Destroy', parametro, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Parametro', new_parametro_path %>

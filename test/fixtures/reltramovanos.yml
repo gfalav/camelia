@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tramo_id: 1
+  vano_id: 1
+  angulo: 1.5
+
+two:
+  tramo_id: 1
+  vano_id: 1
+  angulo: 1.5

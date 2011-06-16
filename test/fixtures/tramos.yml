@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ttramo: 1
+  secuencia: 1
+  proyecto_id: 1
+
+two:
+  ttramo: 1
+  secuencia: 1
+  proyecto_id: 1

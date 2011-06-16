@@ -1,4 +1,14 @@
 Camelia::Application.routes.draw do
+  resources :reltramovanos
+
+  resources :vanos
+
+  resources :ttramos
+
+  resources :parametros
+
+  resources :tramos
+
   resources :puntos do
     collection do
       post 'indajax'

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Radical:</b>
+  <%= @parametro.radical %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @parametro.nombre %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @parametro.desc %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @parametro.valor %>
+</p>
+
+
+<%= link_to 'Edit', edit_parametro_path(@parametro) %> |
+<%= link_to 'Back', parametros_path %>
