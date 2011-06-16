@@ -1,27 +1,27 @@
-<h1>Listing tramos</h1>
+<h2>Lista de Piquetes por Tipo</h2>
 
 <table>
   <tr>
-    <th>Secuencia</th>
-    <th>Proyecto</th>
-    <th>Tramo</th>
-    <th>Tipo tramo</th>
-    <th>Cantidad</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="thdata">Proyecto</th>
+    <th class="thdata">Secuencia</th>
+    <th class="thdata">Tramo</th>
+    <th class="thdata">Tipo Piquete</th>
+    <th class="thdata">Cantidad</th>
+    <th class="hdaction"></th>
+    <th class="hdaction"></th>
+    <th class="hdaction"></th>
   </tr>
 
 <% @tramos.each do |tramo| %>
   <tr>
-    <td><%= tramo.secuencia %></td>
-    <td><%= tramo.proyecto_id %></td>
-    <td><%= tramo.nombre %></td>
-    <td><%= tramo.ttramo.tipo %></td>
-    <td><%= tramo.cantidad %></td>
-    <td><%= link_to 'Show', tramo %></td>
-    <td><%= link_to 'Edit', edit_tramo_path(tramo) %></td>
-    <td><%= link_to 'Destroy', tramo, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="trproy"><%= tramo.proyecto_id %></td>
+    <td class="trsecuencia"><%= tramo.secuencia %></td>
+    <td class="trnombre"><%= tramo.nombre %></td>
+    <td class="trtipo"><%= tramo.ttramo.tipo %></td>
+    <td class="trcantidad"><%= tramo.cantidad %></td>
+    <td class="tdaction"><%= link_to 'Show', tramo %></td>
+    <td class="tdaction"><%= link_to 'Edit', edit_tramo_path(tramo) %></td>
+    <td class="tdaction"><%= link_to 'Destroy', tramo, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

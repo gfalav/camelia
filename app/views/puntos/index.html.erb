@@ -1,42 +1,46 @@
-<h1>Listing puntos</h1>
+<h2>Puntos de la Traza</h2>
+
 <div style="width:100%%">
-<div style="width:50%; float:left;">
+<div style="float:left;">
 	<table id="tbpuntos">
 	  <tr>
-	    <th>Proyecto</th>
-	    <th>Nombre</th>
-	    <th>Secuencia</th>
-	    <th>Latitud</th>
-	    <th>Longitud</th>
-	    <th>Distancia</th>
-	    <th>Angulo</th>
-	    <th></th>
-	    <th></th>
-	    <th></th>
+	    <th class="thdata">Proyecto</th>
+	    <th class="thdata">Nombre</th>
+	    <th class="thdata">Secuencia</th>
+	    <th class="thdata">Latitud</th>
+	    <th class="thdata">Longitud</th>
+	    <th class="thdata">Distancia</th>
+	    <th class="thdata">&Aacute;ngulo</th>
+	    <th class="hdaction"></th>
+	    <th class="hdaction"></th>
+	    <th class="hdaction"></th>
 	  </tr>
 	
 	<% @puntos.each do |punto| %>
 	  <tr>
-	    <td><%= punto.proyecto_id %></td>
-	    <td><%= punto.nombre %></td>
-	    <td><%= punto.secuencia %></td>
-	    <td><%= number_with_precision(punto.latitud, :precision=>4) %></td>
-	    <td><%= number_with_precision(punto.longitud, :precision=>4) %></td>
-	    <td><%= number_with_precision(punto.distancia, :precision=>1) %></td>
-	    <td><%= number_with_precision(punto.angulo, :precision=>3) %></td>
-	    <td><%= link_to 'Show', punto, :proyecto_id=>@proyecto_id %></td>
-	    <td><%= link_to 'Edit', edit_punto_path(punto), :proyecto_id=>@proyecto_id %></td>
-	    <td><%= link_to 'Destroy', punto, :confirm => 'Are you sure?', :method => :delete, :proyecto_id=>@proyecto_id %></td>
+	    <td class="puproy"><%= punto.proyecto_id %></td>
+	    <td class="punombre"><%= punto.nombre %></td>
+	    <td class="pusecuencia"><%= punto.secuencia %></td>
+	    <td class="pulatlng"><%= number_with_precision(punto.latitud, :precision=>4) %></td>
+	    <td class="pulatlng"><%= number_with_precision(punto.longitud, :precision=>4) %></td>
+	    <td class="pulatlng"><%= number_with_precision(punto.distancia, :precision=>1) %></td>
+	    <td class="pulatlng"><%= number_with_precision(punto.angulo, :precision=>1) %></td>
+	    <td class="tdaction"><%= link_to 'Show', punto, :proyecto_id=>@proyecto_id %></td>
+	    <td class="tdaction"><%= link_to 'Edit', edit_punto_path(punto), :proyecto_id=>@proyecto_id %></td>
+	    <td class="tdaction"><%= link_to 'Destroy', punto, :confirm => 'Are you sure?', :method => :delete, :proyecto_id=>@proyecto_id %></td>
 	  </tr>
 	<% end %>
 	</table>
 	
 	<br />
-	<%= link_to 'New Punto', new_punto_path %>
-	<%= link_to 'Calcula Tramos', :controller=>'tramos',:action=>'index',:proyecto_id=>@proyecto_id %>
+	|<%= link_to 'New Punto', new_punto_path %>|<br />
 
+	|<%= link_to 'Lista Tramos', :controller=>'tramos',:action=>'index',:proyecto_id=>@proyecto_id %>| -
+	|<%= link_to 'Calcula Tramos', :controller=>'tramos',:action=>'calctramos',:proyecto_id=>@proyecto_id %>|<br />
+	|<%= link_to 'Datos del Proyecto '+@proyecto_id, proyecto_path(Proyecto.find(@proyecto_id))%>| -
+	|<%= link_to 'Listado de Proyectos', proyectos_path %>|<br />
 	</div>
-	<div id="map_canvas" style="width:50%; height:500px;float:rigth;"></div>
+	<div id="map_canvas" style="width:40%; height:500px;float:rigth;"></div>
 </div>
 
 

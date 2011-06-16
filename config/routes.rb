@@ -7,7 +7,11 @@ Camelia::Application.routes.draw do
 
   resources :parametros
 
-  resources :tramos
+  resources :tramos do
+    collection do
+      get 'calctramos'
+    end
+  end
 
   resources :puntos do
     collection do

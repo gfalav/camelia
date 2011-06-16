@@ -2,8 +2,7 @@ class TramosController < ApplicationController
   # GET /tramos
   # GET /tramos.xml
   def index
-    calcula_tramos(params[:proyecto_id].to_i)
-    @tramos = Tramo.all
+    @tramos = Tramo.where(:proyecto_id=>params[:proyecto_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,6 +10,15 @@ class TramosController < ApplicationController
     end
   end
 
+  def calctramos
+    calcula_tramos(params[:proyecto_id].to_i)
+    @tramos = Tramo.where(:proyecto_id=>params[:proyecto_id])
+
+    respond_to do |format|
+      format.html {render :index}
+      format.xml  { render :xml => @tramos }
+    end    
+  end
   def calcula_tramos(proyecto_id)
     retmax = Parametro.where(:radical => 'retmax')[0].valor
     vmax = Parametro.where(:radical => 'vmax')[0].valor
@@ -44,7 +52,7 @@ class TramosController < ApplicationController
         if (p.distancia < vmax)
           vano.vano = p.distancia
         else
-          vano.vano = p.distancia / (p.distancia/vmax).to_i
+          vano.vano = p.distancia / (( p.distancia/vmax).to_i + 1 )
         end 
         vano.proyecto_id = proyecto_id
         vano.save
@@ -102,7 +110,7 @@ class TramosController < ApplicationController
         if (p.distancia < vmax)
           vano.vano = p.distancia
         else
-          vano.vano = p.distancia / (p.distancia/vmax).to_i
+          vano.vano = p.distancia / (( p.distancia/vmax).to_i + 1 )
         end 
         vano.proyecto_id = proyecto_id
         vano.save

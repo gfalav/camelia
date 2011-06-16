@@ -1,4 +1,23 @@
-body { background-color: #fff; color: #333; }
+body { background-color: #000; color: #0CA3FF; }
+
+
+th.hdaction {border: none;}
+td.tdaction {border: none;}
+th.thdata {color:#FFFFFF; background-color: #212121;}
+td.proyname { width: 400px; }
+td.proyexp { width: 200px;}
+td.puproy {text-align:center;}
+td.punombre {width: 100px;}
+td.pusecuencia {text-align:center;}
+td.pulatlng {text-align:right; width: 70px;}
+td.puang {width: 50px;}
+td.trproy {text-align:center;}
+td.trnombre {width: 300px;}
+td.trsecuencia {text-align:center;}
+td.trtipo {width: 100px;}
+td.trcantidad {width:60px; text-align:right;}
+
+th, tr, td {border: 1px solid white;}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -12,10 +31,10 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
+a { color: #ffffff; }
+a:visited { color: #757575; }
 a:hover { color: #fff; background-color:#000; }
-
+h2 {color:#FFFFFF;}
 div.field, div.actions {
   margin-bottom: 10px;
 }
