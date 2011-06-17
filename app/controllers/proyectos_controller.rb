@@ -60,7 +60,6 @@ class ProyectosController < ApplicationController
   # PUT /proyectos/1
   # PUT /proyectos/1.xml
   def update
-    debugger
     @proyecto = Proyecto.find(params[:id])
 
     respond_to do |format|

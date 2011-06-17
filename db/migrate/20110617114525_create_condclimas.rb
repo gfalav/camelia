@@ -15,7 +15,7 @@ class CreateCondclimas < ActiveRecord::Migration
     Condclima.create(:zona_id=>2,:nombre=>'T c/Vmax',:temp=>10,:viento=>120,:hielo=>0)
     Condclima.create(:zona_id=>2,:nombre=>'T c/Vmed',:temp=>-5,:viento=>50,:hielo=>0)
     Condclima.create(:zona_id=>2,:nombre=>'Tmed',:temp=>16,:viento=>0,:hielo=>0)
-    Condclima.create(:zona_id=>7,:nombre=>'Tracc Max',:temp=>-15,:viento=>0,:hielo=>10)
+    Condclima.create(:zona_id=>6,:nombre=>'Tracc Max',:temp=>-15,:viento=>0,:hielo=>10)
     Condclima.create(:zona_id=>6,:nombre=>'Adicional',:temp=>-10,:viento=>120,:hielo=>0)
     Condclima.create(:zona_id=>6,:nombre=>'Flecha Max 1',:temp=>15,:viento=>120,:hielo=>0)
     Condclima.create(:zona_id=>6,:nombre=>'Flecha Max 2',:temp=>0,:viento=>0,:hielo=>10)
