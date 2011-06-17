@@ -36,5 +36,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_punto_path(@punto) %> |
-<%= link_to 'Back', puntos_path %>
+<%= link_to 'Edit', :action=>'edit', :id=>@punto.id, :proyecto_id=>@proyecto_id %> |
+<%= link_to 'Back', :action=>'index',:proyecto_id=>@proyecto_id %>

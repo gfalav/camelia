@@ -145,11 +145,11 @@ class PuntosController < ApplicationController
   # DELETE /puntos/1.xml
   def destroy
     @punto = Punto.find(params[:id])
+    @proyecto_id = @punto.proyecto_id
     @punto.destroy
-    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
-      format.html { redirect_to(puntos_url) }
+      format.html { redirect_to(:action=>'index',:proyecto_id=>@proyecto_id) }
       format.xml  { head :ok }
     end
   end

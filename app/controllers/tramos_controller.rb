@@ -3,6 +3,7 @@ class TramosController < ApplicationController
   # GET /tramos.xml
   def index
     @tramos = Tramo.where(:proyecto_id=>params[:proyecto_id])
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +14,7 @@ class TramosController < ApplicationController
   def calctramos
     calcula_tramos(params[:proyecto_id].to_i)
     @tramos = Tramo.where(:proyecto_id=>params[:proyecto_id])
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html {render :index}

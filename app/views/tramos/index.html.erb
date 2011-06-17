@@ -4,7 +4,7 @@
   <tr>
     <th class="thdata">Proyecto</th>
     <th class="thdata">Secuencia</th>
-    <th class="thdata">Tramo</th>
+    <th class="thdata">Piquetes</th>
     <th class="thdata">Tipo Piquete</th>
     <th class="thdata">Cantidad</th>
     <th class="hdaction"></th>
@@ -28,4 +28,8 @@
 
 <br />
 
-<%= link_to 'New Tramo', new_tramo_path %>
+|<%= link_to 'New Tramo', new_tramo_path %>|<br />
+|<%= link_to 'Listado de Puntos del proyecto: '+@proyecto_id, :controller=>'puntos', :action=>'index', :proyecto_id=>@proyecto_id %>|<br />
+
+|<%= link_to 'Datos del Proyecto: '+@proyecto_id, proyecto_path(Proyecto.find(@proyecto_id))%>| -
+|<%= link_to 'Listado de Proyectos', proyectos_path %>|<br />
