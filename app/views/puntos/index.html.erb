@@ -35,10 +35,10 @@
 	<br />
 	|<%= link_to 'New Punto', new_punto_path %>|<br />
 
-	|<%= link_to 'Lista Tramos', :controller=>'tramos',:action=>'index',:proyecto_id=>@proyecto_id %>| -
-	|<%= link_to 'Calcula Tramos', :controller=>'tramos',:action=>'calctramos',:proyecto_id=>@proyecto_id %>|<br />
+	|<%= link_to 'Lista Tipos de Piquetes', :controller=>'tramos',:action=>'index',:proyecto_id=>@proyecto_id %>| -
+	|<%= link_to 'Calcula Tipos de Piquetes y Vanos', :controller=>'tramos',:action=>'calctramos',:proyecto_id=>@proyecto_id %>|<br />
 	|<%= link_to 'Datos del Proyecto '+@proyecto_id, proyecto_path(Proyecto.find(@proyecto_id))%>| -
-	|<%= link_to 'Listado de Proyectos', proyectos_path %>|<br />
+	|<%= link_to 'Lista de Proyectos', proyectos_path %>|<br />
 	</div>
 	<div id="map_canvas" style="width:40%; height:500px;float:rigth;"></div>
 </div>

@@ -43,6 +43,30 @@
     <%= f.label :expediente %><br />
     <%= f.text_field :expediente %>
   </div>
+  <div class="field">
+    <%= f.label "Vano Max (m)" %><br />
+    <%= f.text_field :vmax %>
+  </div>
+  <div class="field">
+    <%= f.label "Dist max entre retensiones (m)" %><br />
+    <%= f.text_field :retmax %>
+  </div>
+  <div class="field">
+    <%= f.label :conductor_e_id %><br />
+    <%= f.select :conductor_e_id, options_from_collection_for_select(@conductores, 'id', 'nombre', @proyecto.conductor_e_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :conductor_g_id %><br />
+    <%= f.select :conductor_g_id, options_from_collection_for_select(@conductores, 'id', 'nombre', @proyecto.conductor_g_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :tconstructivo_id %><br />
+    <%= f.text_field :tconstructivo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :zona_id %><br />
+    <%= f.select :zona_id, options_from_collection_for_select(@zonas, 'id', 'nombre', @proyecto.zona_id) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

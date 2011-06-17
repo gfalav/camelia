@@ -2,7 +2,7 @@
 
 <p>
   <b>Proyecto:</b>
-  <%= @tramo.proyecto_id %>
+  <%= @tramo.proyecto.nombre %>
 </p>
 <p>
   <b>Secuencia:</b>
@@ -13,7 +13,7 @@
   <%= @tramo.nombre %>
 </p>
 <p>
-  <b>Ttramo:</b>
+  <b>Tipo de Piquete:</b>
   <%= @tramo.ttramo.tipo %>
 </p>
 <p>
@@ -21,6 +21,44 @@
   <%= @tramo.cantidad %>
 </p>
 
+<h3>Vanos Concurrentes en el Piquete</h3>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Vano</th>
+    <th>Conductor e</th>
+    <th>Conductor g</th>
+    <th>Tiromax e</th>
+    <th>Flechamax e</th>
+    <th>Tma e</th>
+    <th>Tiromax g</th>
+    <th>Flechamax g</th>
+    <th>Tma g</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vanos.each do |vano| %>
+  <tr>
+    <td><%= vano.nombre %></td>
+    <td><%= number_with_precision(vano.vano,:precision=>1) %></td>
+    <td><%= vano.conductor_e.nombre %></td>
+    <td><%= vano.conductor_g.nombre %></td>
+    <td><%= vano.tiromax_e %></td>
+    <td><%= vano.flechamax_e %></td>
+    <td><%= vano.tma_e %></td>
+    <td><%= vano.tiromax_g %></td>
+    <td><%= vano.flechamax_g %></td>
+    <td><%= vano.tma_g %></td>
+    <td><%= link_to 'Calcula Vano', :controller=>'vanos', :action=>'calcvano',:vano=>vano, :tramo=>@tramo %></td>
+    <td><%= link_to 'Show', vano %></td>
+    <td><%= link_to 'Edit', edit_vano_path(vano) %></td>
+    <td><%= link_to 'Destroy', vano, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 
 

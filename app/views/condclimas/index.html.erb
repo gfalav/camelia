@@ -1,0 +1,31 @@
+<h1>Listing condclimas</h1>
+
+<table>
+  <tr>
+    <th>Zona</th>
+    <th>Nombre</th>
+    <th>Temp</th>
+    <th>Viento</th>
+    <th>Hielo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @condclimas.each do |condclima| %>
+  <tr>
+    <td><%= condclima.zona_id %></td>
+    <td><%= condclima.nombre %></td>
+    <td><%= condclima.temp %></td>
+    <td><%= condclima.viento %></td>
+    <td><%= condclima.hielo %></td>
+    <td><%= link_to 'Show', condclima %></td>
+    <td><%= link_to 'Edit', edit_condclima_path(condclima) %></td>
+    <td><%= link_to 'Destroy', condclima, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Condclima', new_condclima_path %>

@@ -4,8 +4,8 @@ class CreateVanos < ActiveRecord::Migration
       t.integer :proyecto_id
       t.string  :nombre
       t.decimal :vano
-      t.integer :conductore_id
-      t.integer :conductorg_id
+      t.integer :conductor_e_id
+      t.integer :conductor_g_id
       t.decimal :tiromax_e
       t.decimal :flechamax_e
       t.decimal :tma_e

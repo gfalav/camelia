@@ -21,9 +21,12 @@ class TramosController < ApplicationController
       format.xml  { render :xml => @tramos }
     end    
   end
+  
+  #divide la linea en tramos y tipos de piquetes
   def calcula_tramos(proyecto_id)
-    retmax = Parametro.where(:radical => 'retmax')[0].valor
-    vmax = Parametro.where(:radical => 'vmax')[0].valor
+    proyecto = Proyecto.find(params[:proyecto_id].to_i) 
+    retmax = proyecto.retmax
+    vmax = proyecto.vmax
     pant = nil
     tant = nil
     
@@ -57,6 +60,8 @@ class TramosController < ApplicationController
           vano.vano = p.distancia / (( p.distancia/vmax).to_i + 1 )
         end 
         vano.proyecto_id = proyecto_id
+        vano.conductor_e_id = proyecto.conductor_e_id
+        vano.conductor_g_id = proyecto.conductor_g_id
         vano.save
         
         if (p.distancia > retmax)
@@ -115,6 +120,8 @@ class TramosController < ApplicationController
           vano.vano = p.distancia / (( p.distancia/vmax).to_i + 1 )
         end 
         vano.proyecto_id = proyecto_id
+        vano.conductor_e_id = proyecto.conductor_e_id
+        vano.conductor_g_id = proyecto.conductor_g_id
         vano.save
 
         if (p.distancia > retmax)
@@ -178,6 +185,7 @@ class TramosController < ApplicationController
   def show
     @tramo = Tramo.find(params[:id])
     @proyecto_id = params[:proyecto_id]
+    @vanos = @tramo.vanos
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,0 +1,37 @@
+<%= form_for(@condclima) do |f| %>
+  <% if @condclima.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@condclima.errors.count, "error") %> prohibited this condclima from being saved:</h2>
+
+      <ul>
+      <% @condclima.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :zona_id %><br />
+    <%= f.text_field :zona_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :temp %><br />
+    <%= f.text_field :temp %>
+  </div>
+  <div class="field">
+    <%= f.label :viento %><br />
+    <%= f.text_field :viento %>
+  </div>
+  <div class="field">
+    <%= f.label :hielo %><br />
+    <%= f.text_field :hielo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

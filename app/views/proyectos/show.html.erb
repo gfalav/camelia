@@ -40,6 +40,35 @@
   <%= @proyecto.expediente %>
 </p>
 
+<p>
+  <b>Vano Max:</b>
+  <%= @proyecto.vmax %>m
+</p>
+
+<p>
+  <b>Distancia max entre retensiones:</b>
+  <%= @proyecto.retmax %>m
+</p>
+
+<p>
+  <b>Conductor de Energ&iacute;a:</b>
+  <%= @proyecto.conductor_e.nombre %>
+</p>
+
+<p>
+  <b>Conductor de Guardia:</b>
+  <%= @proyecto.conductor_g.nombre %>
+</p>
+
+<p>
+  <b>Tipo Constructivo:</b>
+  <%= @proyecto.tconstructivo_id %>
+</p>
+
+<p>
+  <b>Zona Clim&aacute;tica:</b>
+  <%= @proyecto.zona.nombre %>
+</p>
 
 <%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |
 <%= link_to 'Back', proyectos_path %>

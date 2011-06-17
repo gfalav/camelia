@@ -25,6 +25,8 @@ class ProyectosController < ApplicationController
   # GET /proyectos/new.xml
   def new
     @proyecto = Proyecto.new
+    @conductores = Conductor.all
+    @zonas = Zona.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class ProyectosController < ApplicationController
   # GET /proyectos/1/edit
   def edit
     @proyecto = Proyecto.find(params[:id])
+    @conductores = Conductor.all
+    @zonas = Zona.all
   end
 
   # POST /proyectos
@@ -56,6 +60,7 @@ class ProyectosController < ApplicationController
   # PUT /proyectos/1
   # PUT /proyectos/1.xml
   def update
+    debugger
     @proyecto = Proyecto.find(params[:id])
 
     respond_to do |format|

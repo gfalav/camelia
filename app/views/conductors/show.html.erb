@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @conductor.nombre %>
+</p>
+
+<p>
+  <b>Diametro:</b>
+  <%= @conductor.diametro %>
+</p>
+
+<p>
+  <b>Seccion:</b>
+  <%= @conductor.seccion %>
+</p>
+
+<p>
+  <b>Peso:</b>
+  <%= @conductor.peso %>
+</p>
+
+<p>
+  <b>Rmec:</b>
+  <%= @conductor.rmec %>
+</p>
+
+<p>
+  <b>Coef e:</b>
+  <%= @conductor.coef_e %>
+</p>
+
+<p>
+  <b>Coef t:</b>
+  <%= @conductor.coef_t %>
+</p>
+
+<p>
+  <b>Imax:</b>
+  <%= @conductor.imax %>
+</p>
+
+<p>
+  <b>Relec:</b>
+  <%= @conductor.relec %>
+</p>
+
+
+<%= link_to 'Edit', edit_conductor_path(@conductor) %> |
+<%= link_to 'Back', conductors_path %>

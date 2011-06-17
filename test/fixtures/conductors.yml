@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nombre: MyString
+  diametro: 9.99
+  seccion: 9.99
+  peso: 9.99
+  rmec: 9.99
+  coef_e: 9.99
+  coef_t: 9.99
+  imax: 9.99
+  relec: 9.99
+
+two:
+  nombre: MyString
+  diametro: 9.99
+  seccion: 9.99
+  peso: 9.99
+  rmec: 9.99
+  coef_e: 9.99
+  coef_t: 9.99
+  imax: 9.99
+  relec: 9.99

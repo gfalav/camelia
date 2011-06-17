@@ -10,7 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110616150319) do
+ActiveRecord::Schema.define(:version => 20110617114525) do
+
+  create_table "condclimas", :force => true do |t|
+    t.integer  "zona_id"
+    t.string   "nombre"
+    t.decimal  "temp"
+    t.decimal  "viento"
+    t.decimal  "hielo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conductors", :force => true do |t|
+    t.string   "nombre"
+    t.decimal  "diametro"
+    t.decimal  "seccion"
+    t.decimal  "peso"
+    t.decimal  "rmec"
+    t.decimal  "coef_e"
+    t.decimal  "coef_t"
+    t.decimal  "imax"
+    t.decimal  "relec"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parametros", :force => true do |t|
     t.string   "radical"
@@ -32,6 +56,12 @@ ActiveRecord::Schema.define(:version => 20110616150319) do
     t.string   "expediente"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "conductor_e_id"
+    t.integer  "conductor_g_id"
+    t.integer  "zona_id"
+    t.integer  "tconstructivo_id"
+    t.float    "vmax"
+    t.float    "retmax"
   end
 
   create_table "puntos", :force => true do |t|
@@ -59,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110616150319) do
     t.integer  "secuencia"
     t.string   "nombre"
     t.integer  "cantidad"
+    t.decimal  "angulo"
     t.integer  "proyecto_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -74,14 +105,20 @@ ActiveRecord::Schema.define(:version => 20110616150319) do
     t.integer  "proyecto_id"
     t.string   "nombre"
     t.decimal  "vano"
-    t.integer  "conductore_id"
-    t.integer  "conductorg_id"
+    t.integer  "conductor_e_id"
+    t.integer  "conductor_g_id"
     t.decimal  "tiromax_e"
     t.decimal  "flechamax_e"
     t.decimal  "tma_e"
     t.decimal  "tiromax_g"
     t.decimal  "flechamax_g"
     t.decimal  "tma_g"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "zonas", :force => true do |t|
+    t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

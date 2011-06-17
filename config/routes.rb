@@ -1,7 +1,17 @@
 Camelia::Application.routes.draw do
+  resources :condclimas
+
+  resources :zonas
+
+  resources :conductors
+
   resources :reltramovanos
 
-  resources :vanos
+  resources :vanos do
+    collection do
+      get 'calcvano'
+    end
+  end
 
   resources :ttramos
 

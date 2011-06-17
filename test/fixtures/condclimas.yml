@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  zona_id: 1
+  nombre: MyString
+  temp: 9.99
+  viento: 9.99
+  hielo: 9.99
+
+two:
+  zona_id: 1
+  nombre: MyString
+  temp: 9.99
+  viento: 9.99
+  hielo: 9.99

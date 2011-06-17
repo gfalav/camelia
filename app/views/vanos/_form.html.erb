@@ -24,12 +24,12 @@
     <%= f.text_field :vano %>
   </div>
   <div class="field">
-    <%= f.label :conductore_id %><br />
-    <%= f.text_field :conductore_id %>
+    <%= f.label :conductor_e_id %><br />
+    <%= f.select :conductor_e_id, options_from_collection_for_select(@conductores, 'id', 'nombre', @vano.conductor_e_id) %>
   </div>
   <div class="field">
-    <%= f.label :conductorg_id %><br />
-    <%= f.text_field :conductorg_id %>
+    <%= f.label :conductor_g_id %><br />
+    <%= f.select :conductor_g_id, options_from_collection_for_select(@conductores, 'id', 'nombre', @vano.conductor_g_id) %>
   </div>
   <div class="field">
     <%= f.label :tiromax_e %><br />

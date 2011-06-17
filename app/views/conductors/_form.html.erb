@@ -1,0 +1,53 @@
+<%= form_for(@conductor) do |f| %>
+  <% if @conductor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conductor.errors.count, "error") %> prohibited this conductor from being saved:</h2>
+
+      <ul>
+      <% @conductor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :diametro %><br />
+    <%= f.text_field :diametro %>
+  </div>
+  <div class="field">
+    <%= f.label :seccion %><br />
+    <%= f.text_field :seccion %>
+  </div>
+  <div class="field">
+    <%= f.label :peso %><br />
+    <%= f.text_field :peso %>
+  </div>
+  <div class="field">
+    <%= f.label :rmec %><br />
+    <%= f.text_field :rmec %>
+  </div>
+  <div class="field">
+    <%= f.label :coef_e %><br />
+    <%= f.text_field :coef_e %>
+  </div>
+  <div class="field">
+    <%= f.label :coef_t %><br />
+    <%= f.text_field :coef_t %>
+  </div>
+  <div class="field">
+    <%= f.label :imax %><br />
+    <%= f.text_field :imax %>
+  </div>
+  <div class="field">
+    <%= f.label :relec %><br />
+    <%= f.text_field :relec %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
