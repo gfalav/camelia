@@ -177,6 +177,7 @@ class TramosController < ApplicationController
   # GET /tramos/1.xml
   def show
     @tramo = Tramo.find(params[:id])
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -188,6 +189,7 @@ class TramosController < ApplicationController
   # GET /tramos/new.xml
   def new
     @tramo = Tramo.new
+    @proyecto_id = params[:proyecto_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -198,6 +200,7 @@ class TramosController < ApplicationController
   # GET /tramos/1/edit
   def edit
     @tramo = Tramo.find(params[:id])
+    @proyecto_id = params[:proyecto_id]
   end
 
   # POST /tramos
@@ -236,10 +239,11 @@ class TramosController < ApplicationController
   # DELETE /tramos/1.xml
   def destroy
     @tramo = Tramo.find(params[:id])
+    @proyecto_id = @tramo.proyecto_id
     @tramo.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tramos_url) }
+      format.html { redirect_to(:action=>'index',:proyecto_id=>@proyecto_id) }
       format.xml  { head :ok }
     end
   end

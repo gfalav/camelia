@@ -19,8 +19,8 @@
     <td class="trnombre"><%= tramo.nombre %></td>
     <td class="trtipo"><%= tramo.ttramo.tipo %></td>
     <td class="trcantidad"><%= tramo.cantidad %></td>
-    <td class="tdaction"><%= link_to 'Show', tramo %></td>
-    <td class="tdaction"><%= link_to 'Edit', edit_tramo_path(tramo) %></td>
+    <td class="tdaction"><%= link_to 'Show', :action=>'show',:id=>tramo.id, :proyecto_id=>@proyecto_id %></td>
+    <td class="tdaction"><%= link_to 'Edit', :action=>'edit',:id=>tramo.id, :proyecto_id=>@proyecto_id %></td>
     <td class="tdaction"><%= link_to 'Destroy', tramo, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
