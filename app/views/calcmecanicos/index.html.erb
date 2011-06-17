@@ -1,0 +1,43 @@
+<h1>Listing calcmecanicos</h1>
+
+<table>
+  <tr>
+    <th>Vano</th>
+    <th>Condclima</th>
+    <th>Tension</th>
+    <th>Tiro</th>
+    <th>Flecha t</th>
+    <th>Flecha v</th>
+    <th>Flecha h</th>
+    <th>Conductor</th>
+    <th>Temp</th>
+    <th>Viento</th>
+    <th>Hielo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @calcmecanicos.each do |calcmecanico| %>
+  <tr>
+    <td><%= calcmecanico.vano_id %></td>
+    <td><%= calcmecanico.condclima_id %></td>
+    <td><%= calcmecanico.tension %></td>
+    <td><%= calcmecanico.tiro %></td>
+    <td><%= calcmecanico.flecha_t %></td>
+    <td><%= calcmecanico.flecha_v %></td>
+    <td><%= calcmecanico.flecha_h %></td>
+    <td><%= calcmecanico.conductor_id %></td>
+    <td><%= calcmecanico.temp %></td>
+    <td><%= calcmecanico.viento %></td>
+    <td><%= calcmecanico.hielo %></td>
+    <td><%= link_to 'Show', calcmecanico %></td>
+    <td><%= link_to 'Edit', edit_calcmecanico_path(calcmecanico) %></td>
+    <td><%= link_to 'Destroy', calcmecanico, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Calcmecanico', new_calcmecanico_path %>

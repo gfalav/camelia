@@ -10,7 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110617114525) do
+ActiveRecord::Schema.define(:version => 20110617193110) do
+
+  create_table "calcmecanicos", :force => true do |t|
+    t.integer  "vano_id"
+    t.integer  "condclima_id"
+    t.decimal  "tension"
+    t.decimal  "tiro"
+    t.decimal  "flecha_t"
+    t.decimal  "flecha_v"
+    t.decimal  "flecha_h"
+    t.integer  "conductor_id"
+    t.decimal  "temp"
+    t.decimal  "viento"
+    t.decimal  "hielo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "condclimas", :force => true do |t|
     t.integer  "zona_id"
@@ -32,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20110617114525) do
     t.decimal  "coef_t"
     t.decimal  "imax"
     t.decimal  "relec"
+    t.decimal  "tmax"
+    t.decimal  "tmed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,7 +107,6 @@ ActiveRecord::Schema.define(:version => 20110617114525) do
     t.integer  "secuencia"
     t.string   "nombre"
     t.integer  "cantidad"
-    t.decimal  "angulo"
     t.integer  "proyecto_id"
     t.datetime "created_at"
     t.datetime "updated_at"

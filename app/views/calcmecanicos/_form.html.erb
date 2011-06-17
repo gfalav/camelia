@@ -1,0 +1,61 @@
+<%= form_for(@calcmecanico) do |f| %>
+  <% if @calcmecanico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calcmecanico.errors.count, "error") %> prohibited this calcmecanico from being saved:</h2>
+
+      <ul>
+      <% @calcmecanico.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vano_id %><br />
+    <%= f.text_field :vano_id %>
+  </div>
+  <div class="field">
+    <%= f.label :condclima_id %><br />
+    <%= f.text_field :condclima_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tension %><br />
+    <%= f.text_field :tension %>
+  </div>
+  <div class="field">
+    <%= f.label :tiro %><br />
+    <%= f.text_field :tiro %>
+  </div>
+  <div class="field">
+    <%= f.label :flecha_t %><br />
+    <%= f.text_field :flecha_t %>
+  </div>
+  <div class="field">
+    <%= f.label :flecha_v %><br />
+    <%= f.text_field :flecha_v %>
+  </div>
+  <div class="field">
+    <%= f.label :flecha_h %><br />
+    <%= f.text_field :flecha_h %>
+  </div>
+  <div class="field">
+    <%= f.label :conductor_id %><br />
+    <%= f.text_field :conductor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :temp %><br />
+    <%= f.text_field :temp %>
+  </div>
+  <div class="field">
+    <%= f.label :viento %><br />
+    <%= f.text_field :viento %>
+  </div>
+  <div class="field">
+    <%= f.label :hielo %><br />
+    <%= f.text_field :hielo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

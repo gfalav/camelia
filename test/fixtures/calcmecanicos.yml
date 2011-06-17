@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  vano_id: 1
+  condclima_id: 1
+  tension: 9.99
+  tiro: 9.99
+  flecha_t: 9.99
+  flecha_v: 9.99
+  flecha_h: 9.99
+  conductor_id: 1
+  temp: 9.99
+  viento: 9.99
+  hielo: 9.99
+
+two:
+  vano_id: 1
+  condclima_id: 1
+  tension: 9.99
+  tiro: 9.99
+  flecha_t: 9.99
+  flecha_v: 9.99
+  flecha_h: 9.99
+  conductor_id: 1
+  temp: 9.99
+  viento: 9.99
+  hielo: 9.99

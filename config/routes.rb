@@ -1,4 +1,6 @@
 Camelia::Application.routes.draw do
+  resources :calcmecanicos
+
   resources :condclimas
 
   resources :zonas

@@ -1,18 +1,84 @@
 class VanosController < ApplicationController
   
   def calcvano
-    debugger
     vano = Vano.find(params[:vano])
     tramo = Tramo.find(params[:tramo])
+    angulo = Reltramovano.where(:vano_id=>vano.id,:tramo_id=>tramo.id)[0].angulo
     proyecto = vano.proyecto
+    
+    arrtmp = Array.new
+    tmax = fmax = 0
     
     proyecto.zona.condclimas.each {|c|
       flag = 0
+      arrtmp = Array.new
       
-      pv1 = pvcond(proyecto.zona_id, c.viento, tramo.angulo, vano.conductor_e.diametro,vano.vano,25)
+      pv1 = pvcond(proyecto.zona_id, c.viento, angulo, vano.conductor_e.diametro,vano.vano,25)
       ph1 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c.hielo)
       pt1 = Math.sqrt(pv1**2 + (ph1+vano.conductor_e.peso/1000)**2)
+      pang1 = Math.atan(pv1 / (vano.conductor_e.peso/1000 + ph1)) / Math::PI * 180
+      
+      t1 = vano.conductor_e.tmax * vano.conductor_e.seccion
+      tmax = t1
+      f1 = vano.vano**2 * pt1 / 8 / t1
+      fmax = f1
+      
+      k1 = vano.vano**2 * pt1**2 / 24 / (t1**2)  - vano.conductor_e.coef_t * c.temp - t1 / vano.conductor_e.coef_e / vano.conductor_e.seccion
+
+      calc = Calcmecanico.new
+      calc.vano_id = vano.id
+      calc.condclima_id = c.id
+      calc.temp = c.temp
+      calc.viento = c.viento
+      calc.hielo = c.hielo
+      calc.tension = t1 / vano.conductor_e.seccion
+      calc.tiro = t1
+      calc.flecha_t = f1
+      calc.flecha_v = f1 * Math.sin(pang1 / 180 * Math::PI)
+      calc.flecha_h = f1 * Math.cos(pang1 / 180 * Math::PI)
+      calc.conductor_id = vano.conductor_e.id
+      calc.save
+      arrtmp << calc
+      
+      proyecto.zona.condclimas.each {|c2|
+        if (c.id != c2.id)          
+          pv2 = pvcond(proyecto.zona_id, c2.viento, angulo, vano.conductor_e.diametro,vano.vano,25)
+          ph2 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c2.hielo)
+          pt2 = Math.sqrt(pv2**2 + (ph2+vano.conductor_e.peso/1000)**2)
+          pang2 = Math.atan(pv2 / (vano.conductor_e.peso/1000 + ph2)) / Math::PI * 180
+          
+          k2 = (k1 + vano.conductor_e.coef_t * c2.temp) * vano.conductor_e.coef_e * vano.conductor_e.seccion
+          k3 = vano.vano**2 * pt2**2 * vano.conductor_e.coef_e * vano.conductor_e.seccion / 24
+          t2 = newton(k2,k3)
+          f2 = vano.vano**2 * pt2 / 8 / t2
+          
+          if (t2 > t1)
+            flag = 1
+            break
+          else
+            calc = Calcmecanico.new
+            calc.vano_id = vano.id
+            calc.condclima_id = c2.id
+            calc.temp = c2.temp
+            calc.viento = c2.viento
+            calc.hielo = c2.hielo
+            calc.tension = t2 / vano.conductor_e.seccion
+            calc.tiro = t2
+            calc.flecha_t = f2
+            calc.flecha_v = f2 * Math.sin(pang2 / 180 * Math::PI)
+            calc.flecha_h = f2 * Math.cos(pang2 / 180 * Math::PI)
+            calc.conductor_id = vano.conductor_e.id
+            calc.save
+            arrtmp << calc
+          end
+        end
+      }
+      if (flag == 0)
+        break
+      end
     }
+    
+    render :text => 'tmax: ' + tmax.to_s + ' fmax: ' + fmax.to_s
   end
   
   # GET /vanos
@@ -150,5 +216,16 @@ class VanosController < ApplicationController
     return ph
   end
   
-  
+  def newton(k2,k3)
+    n=0
+    x0 = 0.01
+    
+    while (n < 500) do
+      x = x0 - (x0**3 + k2 * x0**2 - k3) / (3 * x0**2 + 2 * k2 * x0);
+      x0 = x;
+      n += 1;
+    end
+    
+    return x    
+  end
 end
