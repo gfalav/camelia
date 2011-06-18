@@ -6,14 +6,17 @@ class VanosController < ApplicationController
     angulo = Reltramovano.where(:vano_id=>vano.id,:tramo_id=>tramo.id)[0].angulo
     proyecto = vano.proyecto
     
+    Calcmecanico.where(:vano_id=>vano.id).destroy_all
+    
     arrtmp = Array.new
     tmax = fmax = tmed = 0
+    hconductor = 25 #se asume que todos estan igual
     
     proyecto.zona.condclimas.each {|c|
       flag = 0
       arrtmp = Array.new
       
-      pv1 = pvcond(proyecto.zona_id, c.viento, angulo, vano.conductor_e.diametro,vano.vano,20)
+      pv1 = pvcond(proyecto.zona_id, c.viento, angulo, vano.conductor_e.diametro,vano.vano,hconductor)
       ph1 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c.hielo)
       pt1 = Math.sqrt(pv1**2 + (ph1+vano.conductor_e.peso/1000)**2)
       pang1 = Math.atan(pv1 / (vano.conductor_e.peso/1000 + ph1)) / Math::PI * 180
@@ -40,12 +43,11 @@ class VanosController < ApplicationController
       calc.flecha_h = f1 * Math.sin(pang1 / 180 * Math::PI)
       calc.flecha_v = f1 * Math.cos(pang1 / 180 * Math::PI)
       calc.conductor_id = vano.conductor_e.id
-      calc.save
       arrtmp << calc
       
       proyecto.zona.condclimas.each {|c2|
         if (c.id != c2.id)          
-          pv2 = pvcond(proyecto.zona_id, c2.viento, angulo, vano.conductor_e.diametro,vano.vano,20)
+          pv2 = pvcond(proyecto.zona_id, c2.viento, angulo, vano.conductor_e.diametro,vano.vano,hconductor)
           ph2 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c2.hielo)
           pt2 = Math.sqrt(pv2**2 + (ph2+vano.conductor_e.peso/1000)**2)
           pang2 = Math.atan(pv2 / (vano.conductor_e.peso/1000 + ph2)) / Math::PI * 180
@@ -73,7 +75,6 @@ class VanosController < ApplicationController
             calc.flecha_h = f2 * Math.sin(pang2 / 180 * Math::PI)
             calc.flecha_v = f2 * Math.cos(pang2 / 180 * Math::PI)
             calc.conductor_id = vano.conductor_e.id
-            calc.save
             arrtmp << calc
           end
         end
@@ -87,7 +88,7 @@ class VanosController < ApplicationController
       Condclima.where(:zona_id => proyecto.zona_id,:nombre=>'Tmed').each { |c|
         arrtmp = Array.new
         
-        pv1 = pvcond(proyecto.zona_id, c.viento, angulo, vano.conductor_e.diametro,vano.vano,20)
+        pv1 = pvcond(proyecto.zona_id, c.viento, angulo, vano.conductor_e.diametro,vano.vano,hconductor)
         ph1 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c.hielo)
         pt1 = Math.sqrt(pv1**2 + (ph1+vano.conductor_e.peso/1000)**2)
         pang1 = Math.atan(pv1 / (vano.conductor_e.peso/1000 + ph1)) / Math::PI * 180
@@ -112,12 +113,11 @@ class VanosController < ApplicationController
         calc.flecha_h = f1 * Math.sin(pang1 / 180 * Math::PI)
         calc.flecha_v = f1 * Math.cos(pang1 / 180 * Math::PI)
         calc.conductor_id = vano.conductor_e.id
-        calc.save
         arrtmp << calc
         
         proyecto.zona.condclimas.each {|c2|
           if (c.id != c2.id)          
-            pv2 = pvcond(proyecto.zona_id, c2.viento, angulo, vano.conductor_e.diametro,vano.vano,20)
+            pv2 = pvcond(proyecto.zona_id, c2.viento, angulo, vano.conductor_e.diametro,vano.vano,hconductor)
             ph2 = phcond(proyecto.zona_id,vano.conductor_e.diametro,c2.hielo)
             pt2 = Math.sqrt(pv2**2 + (ph2+vano.conductor_e.peso/1000)**2)
             pang2 = Math.atan(pv2 / (vano.conductor_e.peso/1000 + ph2)) / Math::PI * 180
@@ -138,13 +138,15 @@ class VanosController < ApplicationController
             calc.flecha_h = f2 * Math.sin(pang2 / 180 * Math::PI)
             calc.flecha_v = f2 * Math.cos(pang2 / 180 * Math::PI)
             calc.conductor_id = vano.conductor_e.id
-            calc.save
             arrtmp << calc
           end
         }
       }
     end
-        
+    arrtmp.each {|a|
+      a.save  
+    }
+    
     render :text => arrtmp.to_json
     
   end
