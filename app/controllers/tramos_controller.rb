@@ -63,6 +63,7 @@ class TramosController < ApplicationController
         vano.conductor_e_id = proyecto.conductor_e_id
         vano.conductor_g_id = proyecto.conductor_g_id
         vano.save
+        vano.calcvano
         
         if (p.distancia > retmax)
           tramo = Tramo.new
@@ -123,6 +124,7 @@ class TramosController < ApplicationController
         vano.conductor_e_id = proyecto.conductor_e_id
         vano.conductor_g_id = proyecto.conductor_g_id
         vano.save
+        vano.calcvano
 
         if (p.distancia > retmax)
           tramo = Tramo.new
